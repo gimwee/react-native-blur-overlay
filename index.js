@@ -21,6 +21,23 @@ export default class BlurOverlay extends React.Component {
 
     }
 
+        componentDidMount() {
+            this.setState({
+                showBlurOverlay: true,
+                fadeIn: new Animated.Value(0),
+            }, () => {
+                Animated.parallel([
+                    Animated.timing(
+                        this.state.fadeIn,
+                        {
+                            toValue: 1,
+                            duration: 500,
+                        }
+                    )
+                ]).start();
+            })
+        }
+
 
         render() {
 
